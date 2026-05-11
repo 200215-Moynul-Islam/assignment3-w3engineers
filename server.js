@@ -23,7 +23,7 @@ app.get("/images", (req, res) => {
   const imagesDir = path.join(__dirname, "images/sanctuary-cap-cana");
   const fileNames = fs.readdirSync(imagesDir);
   const imageUrls = fileNames.map(
-    (fileName) => `/images/santuary-cap-cana/${fileName}`
+    (fileName) => `/images/sanctuary-cap-cana/${fileName}`
   );
 
   res.json(imageUrls);
