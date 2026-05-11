@@ -2,8 +2,10 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 const app = express();
-const PORT = 3000;
 
 // Serve frontend files from public folder
 app.use(express.static(path.join(__dirname, "public")));
@@ -47,17 +49,17 @@ app.get("/get-property", (req, res) => {
       .json({ error: "Please provide a valid query parameter" });
   }
   const rawData = fs.readFileSync(filePath, "utf-8");
-  let properties = JSON.parse(rawData);
+  let data = JSON.parse(rawData);
 
   // Limit the Result.Items array
-  if (limit && properties.Result && properties.Result.Items) {
-    properties.Result.Items = properties.Result.Items.slice(0, Number(limit));
+  if (limit && data.Result && data.Result.Items) {
+    data.Result.Items = data.Result.Items.slice(0, Number(limit));
   }
 
-  res.json(properties);
+  res.json(data);
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running at ${process.env.BASE_URL}`);
 });
