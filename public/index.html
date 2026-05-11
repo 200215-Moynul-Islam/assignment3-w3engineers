@@ -1165,5 +1165,45 @@
         </section>
       </div>
     </main>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+      <div class="gallery-modal__overlay" data-close="true"></div>
+
+      <div class="gallery-modal__content">
+        <button class="gallery-modal__close" aria-label="Close modal">
+          &times;
+        </button>
+
+        <h2 class="gallery-modal__title">All Images</h2>
+
+        <div class="gallery-modal__grid" id="galleryGrid"></div>
+
+        <div class="gallery-modal__mobile-navigation">
+          <button
+            class="gallery-modal__mobile-btn gallery-modal__mobile-btn--prev"
+            aria-label="Previous image"
+          >
+            &#10094;
+          </button>
+
+          <button
+            class="gallery-modal__mobile-btn gallery-modal__mobile-btn--next"
+            aria-label="Next image"
+          >
+            &#10095;
+          </button>
+        </div>
+      </div>
+
+      <span class="gallery-modal__counter">
+        <span id="galleryCurrentImageIndex"></span> /
+        <span id="galleryTotalImageCount"></span>
+      </span>
+    </div>
+
+    <!-- #region JS-->
+    <script src="./scripts/gallary-modal.js"></script>
+    <!-- #endregion -->
   </body>
 </html>

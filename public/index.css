@@ -820,3 +820,150 @@ button:hover {
 /* #endregion */
 /* #endregion */
 /* #endregion */
+
+/* #region Gallery Modal */
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 2;
+}
+
+.gallery-modal.active {
+  display: block;
+}
+
+/* Overlay */
+.gallery-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* Content box */
+.gallery-modal__content {
+  position: relative;
+  width: min(1100px, 92vw);
+
+  max-height: 80vh;
+  overflow-y: auto;
+
+  margin: 10vh auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: var(--space-xl);
+}
+
+/* Title */
+.gallery-modal__title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md);
+}
+
+/* Close */
+.gallery-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+
+  border: none;
+  background: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Grid */
+.gallery-modal__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.gallery-modal__grid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* #region Gallary Modal for Mobile */
+.gallery-modal__mobile-navigation {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .gallery-modal__content {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #000;
+  }
+
+  /* Hide title on mobile */
+  .gallery-modal__title {
+    display: none;
+  }
+
+  /* Image container behaves like viewport */
+  .gallery-modal__grid {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .gallery-modal__grid img {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  /* Mobile navigation bar */
+  .gallery-modal__mobile-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: var(--space-md);
+    color: white;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .gallery-modal__mobile-btn {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+
+    font-size: 1.25rem;
+  }
+
+  .gallery-modal__counter {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+  }
+}
+/* #endregion */
+
+/* #endregion */
