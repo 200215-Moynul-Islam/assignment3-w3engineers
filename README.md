@@ -65,8 +65,8 @@ A responsive resort property page served by an Express.js HTTP server. The proje
 Clone the project:
 
 ```bash
-git clone <repository-url>
-cd <project-folder>
+git clone https://github.com/200215-Moynul-Islam/assignment3-w3engineers.git
+cd assignment3-w3engineers
 ```
 
 Install dependencies:
@@ -94,6 +94,8 @@ PORT=3000
 BASE_URL=http://localhost:3000
 GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
 ```
+
+> ⚠️ Note: The server must run on port **3000**. Do not change the `PORT` value and the BASE_URL. The port number is already used in the frontend so we can not change the port number.
 
 Start the server:
 
