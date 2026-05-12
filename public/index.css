@@ -650,7 +650,15 @@ button:hover {
 
 /* #region Nearby Resorts Header */
 .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-md);
   margin-bottom: var(--space-lg);
+}
+
+.section-header__text {
+  display: block;
 }
 
 .section-title {
@@ -662,6 +670,25 @@ button:hover {
 .section-subtitle {
   font-size: 0.85rem;
   color: #718096;
+}
+
+.property-sort {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background: white;
+}
+
+@media (max-width: 767px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-header__actions {
+    width: 100%;
+  }
 }
 /* #endregion */
 
@@ -683,6 +710,9 @@ button:hover {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .card-image {
@@ -728,6 +758,10 @@ button:hover {
 
 .card-content {
   padding: var(--space-sm);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .card-meta-top {
@@ -762,7 +796,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: var(--space-sm);
+  margin-top: auto;
 }
 
 .provider-logo {
