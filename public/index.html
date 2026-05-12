@@ -17,6 +17,11 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.0.0/dist/css/hotel-datepicker.css"
+    />
+
     <link rel="stylesheet" href="index.css" />
   </head>
 
@@ -601,68 +606,45 @@
               <h3 class="booking-title">Check Villa Availability</h3>
 
               <div class="date-selector">
-                <button class="date-field" type="button">
-                  <span class="date-value">Check-in</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    class="icon icon-arrow"
-                    aria-hidden="true"
-                    focusable="false"
+                <div class="date-field-wrapper">
+                  <label class="date-field-label" for="check-in"
+                    >Check-in</label
                   >
-                    <path
-                      d="M7 10L12 15L17 10"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      fill="none"
-                    />
-                  </svg>
-                </button>
+                  <input
+                    id="check-in"
+                    type="text"
+                    class="date-field-input"
+                    placeholder="Add date"
+                    readonly
+                  />
+                </div>
 
-                <button class="date-field" type="button">
-                  <span class="date-value">Check-out</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    class="icon icon-arrow"
-                    aria-hidden="true"
-                    focusable="false"
+                <div class="date-field-separator">→</div>
+
+                <div class="date-field-wrapper">
+                  <label class="date-field-label" for="check-out"
+                    >Check-out</label
                   >
-                    <path
-                      d="M7 10L12 15L17 10"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      fill="none"
-                    />
-                  </svg>
-                </button>
+                  <input
+                    id="check-out"
+                    type="text"
+                    class="date-field-input"
+                    placeholder="Add date"
+                    readonly
+                  />
+                </div>
               </div>
 
-              <div class="status-msg success">
-                <svg
-                  class="icon icon--sm"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                >
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Dates selected are available
-              </div>
+              <div id="date-picker-container"></div>
 
               <div class="price-summary">
                 <div class="price-item">
                   <span class="price-label">Price Per Night</span>
-                  <span class="price-value">USD $600</span>
+                  <span id="price" class="price-value">USD $2,026</span>
                 </div>
                 <div class="price-item total">
                   <span class="price-label">Total Price</span>
-                  <span class="price-value">USD $1,800</span>
+                  <span id="total-price" class="price-value">USD $2,026</span>
                 </div>
               </div>
 
@@ -687,7 +669,6 @@
                       d="M22 16.92V19.92C22 20.47 21.55 20.92 21 20.92C11.61 20.92 4 13.31 4 3.92C4 3.37 4.45 2.92 5 2.92H8C8.55 2.92 9 3.37 9 3.92C9 5.31 9.22 6.66 9.64 7.92C9.75 8.27 9.67 8.66 9.4 8.92L7.62 10.71C8.88 12.92 10.69 14.73 12.9 15.98L14.68 14.2C14.94 13.93 15.33 13.85 15.68 13.96C16.94 14.38 18.29 14.6 19.68 14.6C20.23 14.6 20.68 15.05 20.68 15.6V16.92H22Z"
                     />
                   </svg>
-
                   <a href="tel:+18889999999"> +1 (888) 999-9999 </a>
                 </div>
               </div>
@@ -770,6 +751,7 @@
     <script src="./scripts/about.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fecha@4.2.3/dist/fecha.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.0.0/dist/js/hotel-datepicker.min.js"></script>
+    <script src="./scripts/booking-sidebar.js"></script>
     <script src="./scripts/nearby-properties.js"></script>
     <script src="http://localhost:3000/maps-api" async defer></script>
     <!-- #endregion -->

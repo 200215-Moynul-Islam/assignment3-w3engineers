@@ -580,6 +580,87 @@ button:hover {
   text-align: center;
 }
 
+.booking-card {
+  overflow: visible;
+}
+
+/* Make the inline calendar fill the card width */
+#date-picker-container {
+  margin: 0.5rem 0;
+}
+
+#date-picker-container .datepicker {
+  position: relative !important; /* override the library's absolute positioning */
+  width: 100% !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Scale the two month columns to fit the 350px sidebar */
+#date-picker-container .datepicker__months {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#date-picker-container .datepicker__month {
+  width: 100% !important; /* show one month at a time inside the narrow sidebar */
+}
+
+date-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.date-field-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.date-field-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+}
+
+.date-field-input {
+  width: 100%;
+  padding: var(--space-sm);
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.date-field-input:focus,
+.date-field-input:hover {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.date-field-input::placeholder {
+  color: #a0aec0;
+  font-weight: 400;
+}
+
+.date-field-separator {
+  font-size: 0.9rem;
+  color: #a0aec0;
+  padding-top: 18px; /* align with input, accounting for label height */
+  flex-shrink: 0;
+}
+
 /* #region Date Selection UI */
 .date-selector {
   display: flex;
