@@ -722,17 +722,7 @@
             <div class="hotels-container" id="nearbyProperties"></div>
 
             <aside class="map-container">
-              <div class="map-placeholder">
-                <iframe
-                  src="https://www.google.com/maps?q=Sanctuary+Cap+Cana+Dominican+Republic&output=embed"
-                  width="100%"
-                  height="100%"
-                  style="border: 0"
-                  allowfullscreen=""
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
+              <div id="map" class="map"></div>
             </aside>
           </div>
         </section>
@@ -775,10 +765,13 @@
       </span>
     </div>
 
-    <!-- #region JS-->
+    <!-- #region JS -->
     <script src="./scripts/gallary-modal.js"></script>
     <script src="./scripts/about.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fecha@4.2.3/dist/fecha.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.0.0/dist/js/hotel-datepicker.min.js"></script>
     <script src="./scripts/nearby-properties.js"></script>
+    <script src="http://localhost:3000/maps-api" async defer></script>
     <!-- #endregion -->
   </body>
 </html>

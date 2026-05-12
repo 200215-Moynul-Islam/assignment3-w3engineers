@@ -59,6 +59,23 @@ app.get("/get-property", (req, res) => {
   res.json(data);
 });
 
+app.get("/maps-api", (req, res) => {
+  const key = process.env.GOOGLE_MAPS_API_KEY;
+
+  if (!key) {
+    return res.status(500).send("Google Maps API key is not configured.");
+  }
+
+  const mapsUrl =
+    `https://maps.googleapis.com/maps/api/js` +
+    `?key=${key}` +
+    `&callback=initGoogleMap` +
+    `&libraries=marker` +
+    `&v=beta` +
+    `&loading=async`;
+  res.redirect(302, mapsUrl);
+});
+
 // Start server
 app.listen(process.env.PORT, () => {
   console.log(`Server running at ${process.env.BASE_URL}`);
