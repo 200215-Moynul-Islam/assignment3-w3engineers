@@ -1,5 +1,32 @@
 const propertyContainer = document.getElementById("nearbyProperties");
 const propertyFilter = document.getElementById("propertyFilter");
+const FAVORITES_STORAGE_KEY = "favoritePropertyIds";
+
+// #region Favourite section
+function getFavoritePropertyIds() {
+  return JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY)) || [];
+}
+
+function setFavoritePropertyIds(ids) {
+  localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(ids));
+}
+
+function isPropertyFavorited(propertyId) {
+  return getFavoritePropertyIds().includes(propertyId);
+}
+
+function togglePropertyFavorite(propertyId) {
+  let favoriteIds = getFavoritePropertyIds();
+
+  if (favoriteIds.includes(propertyId)) {
+    favoriteIds = favoriteIds.filter((id) => id !== propertyId);
+  } else {
+    favoriteIds.push(propertyId);
+  }
+
+  setFavoritePropertyIds(favoriteIds);
+}
+// #endregion
 
 function isMobile() {
   return window.matchMedia("(max-width: 767px)").matches;
@@ -39,7 +66,7 @@ function renderProperties(items) {
 
     const imageUrl = `https://beta.imgservice.rentbyowner.com/640x300/${p.FeatureImage}`;
 
-    // fallback-safe values
+    const propertyId = item.ID;
     const name = p.PropertyName || "Hotel Name Goes Here";
     const price = p.Price ?? p.CachePrice ?? 0;
     const rating = p.ReviewScore ?? 5;
@@ -77,11 +104,20 @@ function renderProperties(items) {
             </svg>
           </button>
 
-          <button aria-label="Favorite">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon hotel-card-heart" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-              <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
+          <button 
+            class="favorite-btn ${
+              isPropertyFavorited(propertyId) ? "active" : ""
+            }" 
+            data-property-id="${propertyId}"
+            aria-label="Toggle Favorite"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24"
+                fill="${isPropertyFavorited(propertyId) ? "red" : "none"}"
+                stroke="${isPropertyFavorited(propertyId) ? "red" : "white"}"
+                stroke-width="2">
+                <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
             </svg>
-          </button>
+            </button>
         </div>
       </div>
 
@@ -120,6 +156,24 @@ function renderProperties(items) {
 // Dropdown handler
 propertyFilter.addEventListener("change", (e) => {
   fetchProperties(e.target.value);
+});
+
+// Toggle Favourite
+propertyContainer.addEventListener("click", (event) => {
+  const favoriteButton = event.target.closest(".favorite-btn");
+  if (!favoriteButton) return;
+
+  const propertyId = favoriteButton.dataset.propertyId;
+  if (!propertyId) return;
+
+  togglePropertyFavorite(propertyId);
+
+  const isFavorited = isPropertyFavorited(propertyId);
+  const icon = favoriteButton.querySelector("svg");
+
+  favoriteButton.classList.toggle("active", isFavorited);
+  icon.setAttribute("fill", isFavorited ? "red" : "none");
+  icon.setAttribute("stroke", isFavorited ? "red" : "white");
 });
 
 // Initial Load
